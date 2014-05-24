@@ -33,7 +33,7 @@
         <h2>Die Aufgaben</h2>
         <h3>Aufgabe 1</h3>
         <ul>
-          <li>Ladet euch die Datei weather_data.csv runter.</li>
+          <li>Ladet euch die Datei <a href="https://drive.google.com/file/d/0B4SEJlefrbQWd3U0MFpWTGJyMWM/edit?usp=sharing">weather_data.csv</a> runter.</li>
           <li>Importiert den Datensatz in eure Datenbank mit: <br>
             <code>mongoimport --type csv --headerline weather_data.csv -d weather -c data </code></li>
           <li>Prüft ob dies geklappt hat. Geht in eure Shell und gibt folgendes ein:<br>
@@ -52,6 +52,26 @@
 <strong>Die Aufgabe:</strong> Welcher Staat hat die niedgriste Temperatur, wenn der Wind aus Westen kommt ("Wind Direction" zwischen 180 und 360 Grad)?
         </p>
         <h3>Aufgabe 2</h3>
+        <p>Schreibe ein Programm, in der Sprache deiner Wahl, welches den Eintrag für jeden Staat findet, in der die höchste Temperatur gemessen würde und diesem Eintrag ein weiteres Feld <code>"month_high"</code> hinzufügt und diesen auf <code>true</code> setzt.
+
+Angenommen es existiert folgender Eintrag, welcher die höchste Temperatur für den Staat "Vermont" verzeichnet, dann muss für diesen Eintrag das Feld <code>"month_high"</code> hinzugefügt werden:
+</p>
+<code><pre>{
+    "_id" : ObjectId("520bea012ab230549e749cff"),
+    "Day" : 1,
+    "Time" : 54,
+    "State" : "Vermont",
+    "Airport" : "BTV",
+    "Temperature" : 39,
+    "Humidity" : 57,
+    "Wind Speed" : 6,
+    "Wind Direction" : 170,
+    "Station Pressure" : 29.6,
+    "Sea Level Pressure" : 150,
+    "month_high" : true
+}</pre></code>
+
+Tip: Nutzt hier die Sortier-Funktion der Datenbank, um im Programmcode selber nicht mehr viel tun zu müssen.
         <h3>Aufgabe 3</h3>
         <h3>Aufgabe 4</h3>
         <h3>Aufgabe 5</h3>
