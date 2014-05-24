@@ -73,7 +73,35 @@ Angenommen es existiert folgender Eintrag, welcher die höchste Temperatur für 
 
 Tip: Nutzt hier die Sortier-Funktion der Datenbank, um im Programmcode selber nicht mehr viel tun zu müssen.
         <h3>Aufgabe 3</h3>
+        <p>Ladet euch das Projekt-Template für eure jeweilige Sprache runter.
+Anwendung starten:</p>
+<code>Java: mvn compile exec:java -Dexec.mainClass=blog.BlogController</code><br>
+<code>Node.JS: npm install; node app.js</code>
+<p>
+  <br>
+URLs:
+<ul>
+<li>http://localhost:3000/signup</li>
+<li>http://localhost:3000/login</li>
+<li>http://localhost:3000/logout</li>
+</ul>
+</p>
+<strong>Die Aufgabe:</strong> Fügt an den markierten Stellen <code>//TODO: Aufgabe 3</code> den fehlenden Code hinzu, so dass Benutzer sich registrieren und sich einloggen können.
+<br><br>
+Innerhalb der Datenbank sieht die User-Collection dann folgendermaßen aus:
+<code><pre>> use blog
+switched to db blog
+> db.users.find()
+{ "_id" : "dummy", "password" : "$2a$10$wl4bNB/5CqwWx4bB66PoQ.lmYvxUHigM1ehljyWQBupen3uCcldoW", "email" : "my@mail.com" }
+></pre></code>
+Am Ende der Aufgabe muss man sich auf der Seite http://localhost:3000/signup registrieren können und auf http://localhost:3000/login sich mit diesen Daten einloggen können.
+
         <h3>Aufgabe 4</h3>
+        Ladet euch die students.json runter und import diese in eure Datenbank:<br>
+<code>$ mongoimport -d school -c students < students.json</code><br><br>
+
+<strong>Die Aufgabe:</strong>
+Schreibt ein Programm (in der Sprache eurer Wahl), welches welches die Hausaufgabe (<code>type : "homework"</code>) mit der niedrigsten Wertung entfernt.
         <h3>Aufgabe 5</h3>
         <h3>Aufgabe 6</h3>
         <h3>Aufgabe 7</h3>
