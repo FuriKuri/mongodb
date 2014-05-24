@@ -177,7 +177,7 @@ mkdir -p /data/rs1 /data/rs2 /data/rs3
 mongod --replSet m101 --logpath "1.log" --dbpath /data/rs1 --port 27017 --smallfiles --oplogSize 64 --fork
 mongod --replSet m101 --logpath "2.log" --dbpath /data/rs2 --port 27018 --smallfiles --oplogSize 64 --fork
 mongod --replSet m101 --logpath "3.log" --dbpath /data/rs3 --port 27019 --smallfiles --oplogSize 64 --fork
-</pre></code>Windows users: Omit -p from mkdir. Also omit --fork and use start mongod with Windows compatible paths (i.e. back slashes "\") for the --dbpath argument (e.g; C:\data\rs1).
+</pre></code>Windows Users: kein -p bei mkdir. Auch kein --fork. Zudem beim Pfad aufpassen, Bacl Slashes verwenden (e.g; C:\data\rs1).
 <pre><code>mongo --port 27017
 
 config = { _id: "m101", members:[
