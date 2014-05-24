@@ -155,9 +155,42 @@ Den Schnitt für jeden Studenten von allen nicht Quiz Aufgaben zu errechnen. (al
 
 Hinweis: Die schlechteste Klasse ist die mit der ID 2 mit einem Schnitt von 37,6.
         <h3>Aufgabe 10</h3>
+Ladet euch die Datei zips.json runter.<br><code><pre>
+mongoimport -d test -c zips --drop zips.json
+
+> db.zips.count()
+29467</pre></code>Berechne die Gesamtanzahl an Leute, die in einer Stadt wohnen, welche mit einer Ziffer beginnen.
+
+Das erste Zeichen kann folgendermaßen exrahiert werden:<code><pre>
+db.zips.aggregate([
+    {$project:
+     {
+        first_char: {$substr : ["$city",0,1]},
+     }
+   }
+])</pre></code>
         <h3>Aufgabe 11</h3>
+Baut eine kleine Replica Set auf.
+<code><pre>
+mkdir -p /data/rs1 /data/rs2 /data/rs3
+
+mongod --replSet m101 --logpath "1.log" --dbpath /data/rs1 --port 27017 --smallfiles --oplogSize 64 --fork
+mongod --replSet m101 --logpath "2.log" --dbpath /data/rs2 --port 27018 --smallfiles --oplogSize 64 --fork
+mongod --replSet m101 --logpath "3.log" --dbpath /data/rs3 --port 27019 --smallfiles --oplogSize 64 --fork
+</pre></code>Windows users: Omit -p from mkdir. Also omit --fork and use start mongod with Windows compatible paths (i.e. back slashes "\") for the --dbpath argument (e.g; C:\data\rs1).
+<pre><code>mongo --port 27017
+
+config = { _id: "m101", members:[
+          { _id : 0, host : "localhost:27017"},
+          { _id : 1, host : "localhost:27018"},
+          { _id : 2, host : "localhost:27019"} ]
+         };
+rs.initiate(config);
+rs.status()
+</pre></code>
         <h3>Aufgabe 12</h3>
         <h3>Aufgabe 13</h3>
+        <h3>Aufgabe 14</h3>
       </section>
       <footer>
         <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
