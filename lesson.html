@@ -103,7 +103,30 @@ Am Ende der Aufgabe muss man sich auf der Seite http://localhost:3000/signup reg
 <strong>Die Aufgabe:</strong>
 Schreibt ein Programm (in der Sprache eurer Wahl), welches welches die Hausaufgabe (<code>type : "homework"</code>) mit der niedrigsten Wertung entfernt.
         <h3>Aufgabe 5</h3>
+        Erweitert eure Anwendung soweit, dass Blogeinträge hinzugefügt werden können.
+<br><code>http://localhost:8082/newpost</code><br><br>
+In der Datenbank sollte nun folgende EInträge zu finden sein:
+<code><pre>> db.posts.find().pretty()
+{
+"_id" : ObjectId("513d396da0ee6e58987bae74"),
+"title" : "Martians to use MongoDB",
+"author" : "andrew",
+"body" : "Representatives from the planet Mars announced today that the planet would adopt MongoDB as a planetary standard. Head Martian Flipblip said that MongoDB was the perfect tool to store the diversity of life that exists on Mars.",
+"permalink" : "martians_to_use_mongodb",
+"tags" : [
+"martians",
+"seti",
+"nosql",
+"worlddomination"
+],
+"comments" : [ ],
+"date" : ISODate("2013-03-11T01:54:53.692Z")
+}</pre></code>
         <h3>Aufgabe 6</h3>
+        Kommentare hinzufügen
+Erweitert eure Anwendung soweit, dass Blogeinträge Kommenatre entgegen nehmen können.<br>
+<code>http://localhost:8082/post/post_slug</code><br>
+<code>http://localhost:8082/post/martians_to_use_mongodb</code>
         <h3>Aufgabe 7</h3>
         <h3>Aufgabe 8</h3>
         <h3>Aufgabe 9</h3>
