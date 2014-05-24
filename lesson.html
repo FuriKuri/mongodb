@@ -77,15 +77,11 @@ Tip: Nutzt hier die Sortier-Funktion der Datenbank, um im Programmcode selber ni
 Anwendung starten:</p>
 <code>Java: mvn compile exec:java -Dexec.mainClass=blog.BlogController</code><br>
 <code>Node.JS: npm install; node app.js</code>
-<p>
-  <br>
-URLs:
-<ul>
-<li>http://localhost:3000/signup</li>
+  <br><br>
+URLs:<ul><li>http://localhost:3000/signup</li>
 <li>http://localhost:3000/login</li>
 <li>http://localhost:3000/logout</li>
 </ul>
-</p>
 <strong>Die Aufgabe:</strong> Fügt an den markierten Stellen <code>//TODO: Aufgabe 3</code> den fehlenden Code hinzu, so dass Benutzer sich registrieren und sich einloggen können.
 <br><br>
 Innerhalb der Datenbank sieht die User-Collection dann folgendermaßen aus:
@@ -136,6 +132,17 @@ Schaut, welche Abfrage die Anwendung nutzt und optimiert diese.
 <li>Show blog post: <code>http://localhost:8082/post/permalink</code></li>
 </ul>
         <h3>Aufgabe 8</h3>
+        Ladet euch die Datei small_zips,json runter.<br>
+<code>mongoimport -d test -c zips --drop small_zips.json</code><br><br>
+
+Berechnet die durchschnittliche Einwohneranzahl für die Städte in den Staaten California (CA) und New York (NY). In die Berechnung sollen nur Städte einfließen mit einer Einwohneranzahl größer als 25.000.
+<br>
+Achtung:
+<ul><li>Städte können mehrere ZipCodes haben</li>
+<li>Städte können in mehreren Staaten auftauchen</li></ul>
+Für Städte, welche in mehr als nur einem Staat auftauchen gilt, werden als eigenständige Städte angesehen.
+<br>
+Hinweis: Für CT und NJ ist die Anwort: 38177
         <h3>Aufgabe 9</h3>
         <h3>Aufgabe 10</h3>
         <h3>Aufgabe 11</h3>
