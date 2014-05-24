@@ -32,6 +32,25 @@
       <section>
         <h2>Die Aufgaben</h2>
         <h3>Aufgabe 1</h3>
+        <ul>
+          <li>Ladet euch die Datei weather_data.csv runter.</li>
+          <li>Importiert den Datensatz in eure Datenbank mit: <br>
+            <code>mongoimport --type csv --headerline weather_data.csv -d weather -c data </code></li>
+          <li>Prüft ob dies geklappt hat. Geht in eure Shell und gibt folgendes ein:<br>
+          <code><pre>
+> use weather
+> db.data.find().count()
+> 2963</pre></code></li>
+        </ul>
+        <p>
+          Die Windrichting ist in Grad angegeben:<ul>
+<li>90 ist Osten</li>
+<li>180 ist Süden</li>
+<li>270 ist Westen</li>
+<li>360 ist Norden</li>
+</ul>
+<strong>Die Aufgabe:</strong> Welcher Staat hat die niedgriste Temperatur, wenn der Wind aus Westen kommt ("Wind Direction" zwischen 180 und 360 Grad)?
+        </p>
         <h3>Aufgabe 2</h3>
         <h3>Aufgabe 3</h3>
         <h3>Aufgabe 4</h3>
