@@ -173,7 +173,20 @@ posts.update({permalink: permalink}, {'$push': {comments: comment}}, function(er
     callback(err, numModified);
 });</pre></code>
         <h3>Aufgabe 7</h3>
+        <strong>HomePage</strong><br>
+ -> <code>db.posts.ensureIndex({ date: -1})</code><br>
+<strong>Shows by Tag: http://localhost:8082/tag/whatever</strong><br>
+ -> <code>db.posts.ensureIndex({ permalink: 1}, {unique: true})</code><br>
+<strong>Show blog post: http://localhost:8082/post/permalink</strong><br>
+ -> <code>db.posts.ensureIndex({ tags: 1})</code><br>
         <h3>Aufgabe 8</h3>
+        <code><pre>
+db.zips.aggregate([
+  {$match: {state:{$in:["CA","NY"]}}},
+  {$group: {_id:{city:"$city",state:"$state"}, pop:{$sum:"$pop"}} },
+  {$match:{pop:{$gt:25000}}},
+  {$group:{_id:null, avg:{$avg:"$pop"}} }
+])</pre></code>
         <h3>Aufgabe 9</h3>
         <h3>Aufgabe 10</h3>
         <h3>Aufgabe 11</h3>
