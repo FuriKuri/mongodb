@@ -57,7 +57,7 @@ MongoClient.connect('mongodb://localhost:27017/weather', function(err, db) {
     }
     var currentState = doc['State']
 
-    if (currentState != lastState) {
+    if (lastState == '' || currentState != lastState) {
       lastState = currentState;
       doc['month_high'] = true;
       grades.save(doc, function(err, saved) {
