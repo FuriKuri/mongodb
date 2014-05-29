@@ -48,10 +48,1218 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
+  <slide class="fill">
+    <article class="flexbox vcenter">
+      <span><img src="images/twitter2.jpg" style="width:800px"></span>
+    </article>
+  </slide>
+
   <slide>
     <hgroup>
       <h2>What is MongoDB?</h2>
     </hgroup>
+  </slide>
+
+<slide class="fill nobackground" style="background-image: url(images/cat5.jpg)">
+  <hgroup class="auto-fadein">
+    <h2 class="white">MongoDB is Document-Oriented</h2>
+  </hgroup>
+  <footer class="source white">Source: www.flickr.com/photos/salihan/5495439601</footer>
+</slide>
+
+  <slide>
+    <hgroup>
+      <h2>Documents in JSON</h2>
+      <h3>JavaScript Object Notation</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="json">
+> db.classes.findOne()
+
+{ "_id" : ObjectId("536c864e7f5acdac899c2532"),
+  "class" : "algebra",
+  "students" : [
+    { "name" : "Martin",
+      "activities" : [
+        { "name" : "soccer",
+          "type" : "sport" },
+        { ... }
+      ]
+    }
+  ]
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/cat1.jpg)">
+    <hgroup class="auto-fadein">
+      <h2 class="white">MongoDB is Schemaless</h2>
+    </hgroup>
+    <footer class="source white">Source: www.flickr.com/photos/podi/3768004471</footer>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>MongoDB is Schemaless</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="json">
+> db.users.find().pretty()
+{
+  "id": 1
+  "name" : "Andrew Erlichson",
+  "city_of_birth" : "Cologne"
+}
+{
+  "id": 2
+  "name" : "Richard Kreuter",
+  "city_of_birth" : "Bonn",
+  "favorite_color" : "Red"
+}
+</pre>
+    </article>
+  </slide>
+
+
+  <slide class="fill nobackground" style="background-image: url(images/cat6.jpg)">
+    <hgroup class="auto-fadein">
+      <h2 class="white">MongoDB is build for...</h2>
+    </hgroup>
+    <article class="flexbox vleft auto-fadein" style="margin-top:-70px">
+      <q style="color:white;">
+        scalability, <br>performance <br>and high availability
+      </q>
+    </article>
+    <footer class="source white">Source: www.flickr.com/photos/rampx/8081873031</footer>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/cat7.jpg)">
+    <hgroup class="auto-fadein">
+      <h2 class="white">MongoDB is Designed for Ease of Development</h2>
+    </hgroup>
+    <footer class="source white">Source: www.flickr.com/photos/rampx/8454107947</footer>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/cat8.jpg)">
+    <hgroup class="auto-fadein">
+      <h2 class="white">MongoDB is Open Source</h2>
+    </hgroup>
+    <footer class="source white">Source: www.flickr.com/photos/richdedeyan/5003878063</footer>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/mongo_icon.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>CRUD</h2>
+      <h3>and the Mongo Shell</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/cat.jpg)">
+    <article class="flexbox vleft auto-fadein">
+      <q style="color:white;">
+        MongoDB's CRUD <br/>  operations exist as <br/>  methods/functions <br/>  in programming <br/> language APIs, not <br/> as a separate language.
+      </q>
+    </article>
+    <footer class="source white">Source: Eric Schmidt</footer>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What is the Mongo Shell?</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>interact with the db</li>
+        <li>interactive javascript interpreter</li>
+        <li>history</li>
+        <li>supports keyboard shortcuts</li>
+        <li>customizable shell prompt</li>
+        <li>type in <code>help</code> for more informations</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>In the Mongo Shell</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+&gt; for (i = 10; i &lt; 13; i++) print(i);
+10
+11
+12
+&gt; x = 1
+1
+&gt; x
+1
+&gt; y = &quot;abc&quot;
+abc
+&gt; z = { a : 1 }
+{ &quot;a&quot; : 1 }
+&gt; z[&quot;a&quot;]
+1
+&gt; z.a
+1
+</pre>
+    </article>
+  </slide>
+
+
+  <slide class="fill nobackground" style="background-image: url(images/cat2.jpg)">
+    <hgroup class="auto-fadein vright">
+      <h2 class="black">MongoDB uses BSON to store the data</h2>
+    </hgroup>
+    <article class="flexbox vleft auto-fadein">
+
+      <q style="color:white;">
+        BSON <i>[bee · sahn]</i>, <br/>short for Bin­ary JSON
+      </q>
+
+    </article>
+    <footer class="source white">Source: www.flickr.com/photos/cuttlefish/4969115663</footer>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Inserting Docs</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+&gt; doc = {&quot;name&quot; : &quot;Smith&quot;, &quot;age&quot; : 30, &quot;profession&quot; : &quot;hacker&quot;}
+{ &quot;name&quot; : &quot;Smith&quot;, &quot;age&quot; : 30, &quot;profession&quot; : &quot;hacker&quot; }
+
+&gt; db.people.insert(doc)
+WriteResult({ &quot;nInserted&quot; : 1 })
+
+&gt; db.people.find().pretty()
+{
+  &quot;_id&quot; : ObjectId(&quot;536cc97e4c7c8fcb4b1d6238&quot;),
+  &quot;name&quot; : &quot;Smith&quot;,
+  &quot;age&quot; : 30,
+  &quot;profession&quot; : &quot;hacker&quot;
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/cat3.jpg)">
+    <hgroup class="auto-fadein vright">
+      <h2 class="white">{ &quot;_id&quot; : ObjectId }</h2>
+    </hgroup>
+    <article class="flexbox vleft auto-fadein">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <q class="black" style="margin-top:400px">
+        The <code>_id</code> field is the primary key.
+        <br>
+        ObjectId is a global unique identifier
+      </q>
+    </article>
+    <footer class="source black" style="position:relative; top:20px;">Source: www.flickr.com/photos/mastrobiggo/2403297356</footer>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Find a Document</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+> db.people.findOne()
+{
+  "_id" : ObjectId("536cc97e4c7c8fcb4b1d6238"),
+  "name" : "Smith",
+  "age" : 30,
+  "profession" : "hacker"
+}
+> db.people.findOne({"name":"Jones"})
+{
+  "_id" : ObjectId("536ccf014c7c8fcb4b1d6239"),
+  "name" : "Jones",
+  "age" : 35,
+  "profession" : "baker"
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Prepare your Mongo</h2>
+      <h3>Copy this into your shell</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+for (i = 0; i &lt; 1000; i++) {
+  names = [&quot;exam&quot;, &quot;essay&quot;, &quot;quiz&quot;];
+  for (j = 0; j &lt; 3; j++) {
+    db.scores.insert({
+        &quot;student&quot; : i,
+        &quot;type&quot; : names[j],
+        &quot;score&quot; : Math.round(Math.random()*100)
+    });
+  }
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Querying Using field Selection</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+&gt; db.scores.find({type:&quot;essay&quot;})
+{ &quot;_id&quot; : ObjectId(&quot;536e5252ebe9d35a64cf349a&quot;),
+  &quot;student&quot; : 970, &quot;type&quot; : &quot;essay&quot;, &quot;score&quot; : 75 }
+...
+
+&gt; db.scores.find({student:19})
+...
+
+&gt; db.scores.find({student:19, type:&quot;essay&quot;})
+{ &quot;_id&quot; : ObjectId(&quot;536e5252ebe9d35a64cf2975&quot;),
+  &quot;student&quot; : 19, &quot;type&quot; : &quot;essay&quot;, &quot;score&quot; : 47 }
+
+&gt; db.scores.find({student:19, type:&quot;essay&quot;}, {score:true, _id:false})
+{ &quot;score&quot; : 47 }
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Querying Using $gt and $lt</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+&gt; db.scores.find({score : { $gt : 95 } } )
+...
+
+&gt; db.scores.find({score : { $gt : 95 }, type : &quot;essay&quot; } )
+...
+
+&gt; db.scores.find({score : { $gt : 95, $lt : 98 }, type : &quot;essay&quot; } )
+...
+&gt; db.scores.find({score : { $gte : 95, $lte : 98 }, type : &quot;essay&quot; } )
+...
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Inequalities on Strings</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+&gt; db.people.find({name : {$lt : &quot;D&quot;}})
+{ &quot;_id&quot; : ObjectId(&quot;536e58a6ebe9d35a64cf34f3&quot;), &quot;name&quot; : &quot;Alice&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;536e58a6ebe9d35a64cf34f4&quot;), &quot;name&quot; : &quot;Bob&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;536e58a6ebe9d35a64cf34f5&quot;), &quot;name&quot; : &quot;Charlie&quot; }
+&gt; db.people.find({name : {$lt : &quot;D&quot;, $gt : &quot;B&quot;}})
+{ &quot;_id&quot; : ObjectId(&quot;536e58a6ebe9d35a64cf34f4&quot;), &quot;name&quot; : &quot;Bob&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;536e58a6ebe9d35a64cf34f5&quot;), &quot;name&quot; : &quot;Charlie&quot; }
+
+&gt; db.people.insert({ name : 42 })
+
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Using regexes, $exists, $type</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.people.find({profession : {$exists : true}})
+db.people.find({profession : {$exists : false}})
+
+db.people.find({name : {$type : 2}})
+
+db.people.find({name : {$regex : "a"}})
+db.people.find({name : {$regex : "e$"}})
+db.people.find({name : {$regex : "^A"}})
+</pre>
+    </article>
+  </slide>
+
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Using $or, $and</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.people.find( { $or : [
+  { name : { $regex : "e$" }},
+  { age : { $exists : true }}
+]} )
+
+db.people.find( { $and : [
+  { name : { $gt : "C" }},
+  { name : { $regex : "a" }}
+]} )
+
+db.people.find(
+  { name : { $gt : "C", $regex : "a" }}
+)
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Querying Inside Arrays</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.accounts.insert({name:&quot;Howard&quot;, favorites : [&quot;pretzels&quot;, &quot;beer&quot;]})
+db.accounts.insert({name:&quot;Irving&quot;, favorites : [&quot;beer&quot;, &quot;ice cream&quot;, &quot;cheese&quot;]})
+db.accounts.insert({name:&quot;John&quot;, favorites : [&quot;cheese&quot;, &quot;pretzels&quot;]})
+db.accounts.insert({name:&quot;George&quot;, favorites : [&quot;ice cream&quot;, &quot;beer&quot;]})
+
+db.accounts.find({favorites : &quot;beer&quot;})
+db.accounts.find({favorites : &quot;beer&quot;, name : {$gt: &quot;H&quot;}})
+
+db.accounts.find({favorites : { $all : [&quot;beer&quot;, &quot;ice cream&quot;] }})
+
+db.accounts.find({name : { $in : [&quot;John&quot;, &quot;Howard&quot;] }})
+
+db.accounts.find({favorites : { $in : [&quot;beer&quot;, &quot;cheese&quot;] }})
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Querying with Dot Notation</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+&gt; db.users.findOne()
+{
+  &quot;_id&quot; : ObjectId(&quot;536e7f3febe9d35a64cf3501&quot;),
+  &quot;name&quot; : &quot;richard&quot;,
+  &quot;email&quot; : {
+    &quot;work&quot; : &quot;richard@mail.com&quot;,
+    &quot;personal&quot; : &quot;kreuter@mail.com&quot;
+  }
+}
+
+db.users.find({email:{work : &quot;richard@mail.com&quot;, personal : &quot;kreuter@mail.com&quot;}})
+
+db.users.find({email:{personal : &quot;kreuter@mail.com&quot;, work : &quot;richard@mail.com&quot;}})
+db.users.find({email:{work : &quot;richard@mail.com&quot;}})
+
+db.users.find({email.work : &quot;richard@mail.com&quot;})
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Querying, Cursors</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+&gt; cur = db.people.find(); null;
+null
+&gt; cur.hasNext()
+true
+&gt;  cur.next()
+{ &quot;_id&quot; : ObjectId(&quot;536e58a6ebe9d35a64cf34f3&quot;), &quot;name&quot; : &quot;Alice&quot; }
+&gt;  while(cur.hasNext()) printjson(cur.next());
+{ &quot;_id&quot; : ObjectId(&quot;536e58a6ebe9d35a64cf34f4&quot;), &quot;name&quot; : &quot;Bob&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;536e58a6ebe9d35a64cf34f5&quot;), &quot;name&quot; : &quot;Charlie&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;536e58a6ebe9d35a64cf34f6&quot;), &quot;name&quot; : &quot;Dave&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;536e58a6ebe9d35a64cf34f7&quot;), &quot;name&quot; : &quot;Edgar&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;536e58a6ebe9d35a64cf34f8&quot;), &quot;name&quot; : &quot;Fred&quot; }
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Querying, Cursors</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+cur = db.scores.find(); null;
+cur.limit(5); null;
+
+cur = db.scores.find(); null;
+cur.sort( { name : -1 } ); null;
+
+cur = db.scores.find(); null;
+cur.sort( { name : -1 } ).limit(3); null;
+
+cur.sort( { name : -1 } ).limit(3).skip(2);
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Counting</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.scores.find({type:&quot;exam&quot;}).count();
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Updating</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.people.update({name : &quot;Smith&quot;}, {name : &quot;Thompson&quot;, salary : 50000})
+
+db.people.update({name : &quot;Alice&quot;}, {$set : {age : 30}})
+db.people.update({name : &quot;Alice&quot;}, {$inc : {age : 1}})
+
+db.people.update({name : &quot;John&quot;}, {$unset : {profession : 1}})</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Using ¢push, $pop, ...</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.arrays.insert({ _id : 0, a : [ 1, 2, 3, 4 ]})
+
+db.arrays.update({ _id : 0 }, { $set : { &quot;a.2&quot; : 5 }})
+
+db.arrays.update({ _id : 0 }, { $push : { a : 5 }})
+
+db.arrays.update({ _id : 0 }, { $pop : { a : 1 }})
+db.arrays.update({ _id : 0 }, { $pop : { a : -1 }})
+
+db.arrays.update({ _id : 0 }, { $pushAll : { a : [7, 8, 9] }})
+
+db.arrays.update({ _id : 0 }, { $pull : { a : 3 }})
+db.arrays.update({ _id : 0 }, { $pullAll : { a : [ 1, 2, 3 ] }})
+
+db.arrays.update({ _id : 0 }, { $addToSet : { a : 5 }})
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Upsert, Multiupdate</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.people.update(
+  { name : &quot;George&quot; },
+  { $set : { age : 40 } },
+  { upsert : true })
+
+db.people.update(
+  {},
+  { $set : { title : &quot;DR&quot; } },
+  { multi : true })
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Removing Data</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.people.remove({ name : &quot;Alice&quot; })
+db.people.remove({ name : { $gt : &quot;M&quot; }})
+db.people.remove({})
+db.people.drop()
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Using MongoDB in Java</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+import com.mongodb.*;
+
+public class Sample {
+  public static void main(String[] args) throws UnknownHostException {
+    final MongoClient mongoClient = new MongoClient(
+        new MongoClientURI(&quot;mongodb://localhost&quot;));
+    final DB db = mongoClient.getDB(&quot;test&quot;);
+    final DBCollection people = db.getCollection(&quot;people&quot;);
+    final BasicDBList emails = new BasicDBList();
+    emails.add(new BasicDBObject("work", "work@mail.com"));
+    emails.add(new BasicDBObject("private", "private@mail.com"));
+    final BasicDBObject john = new BasicDBObject("name", "John")
+       .append("age", 30)
+       .append("email", emails);
+    people.insert(john);
+  }
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Using MongoDB in Java</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+import com.mongodb.*;
+
+public class Sample {
+  public static void main(String[] args) throws UnknownHostException {
+    final MongoClient mongoClient = new MongoClient(
+        new MongoClientURI(&quot;mongodb://localhost&quot;));
+    final DB db = mongoClient.getDB(&quot;test&quot;);
+    final DBCollection people = db.getCollection(&quot;people&quot;);
+    final DBCursor cursor = people.find().sort(
+        new BasicDBObject(&quot;age&quot;, 1).append(&quot;name&quot;, 1));
+    while (cursor.hasNext()) {
+      final DBObject person = cursor.next();
+      int current_id = (Integer) person.get(&quot;age&quot;);
+      String name = (String) person.get(&quot;name&quot;);
+      System.out.println(age + &quot; &quot; + name);
+    }
+  }
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Using MongoDB in Node</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+var MongoClient = require(&#39;mongodb&#39;).MongoClient;
+MongoClient.connect('mongodb://localhost:27017/school', function(err, db) {
+  if(err) throw err;
+  var people = db.collection(&#39;people&#39;);
+  var john = {
+    name: &quot;John&quot;,
+    age: 30,
+    email : [
+        { work: &quot;work@mail.com&quot; },
+        { personal: &quot;personal@mail.com&quot; }
+    ]
+  };
+  people.insert(john, function(err, inserted) {
+    console.dir(&quot;Success: &quot; + JSON.stringify(inserted));
+  });
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Using MongoDB in Node</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+var MongoClient = require('mongodb').MongoClient;
+MongoClient.connect('mongodb://localhost:27017/school', function(err, db) {
+  if(err) throw err;
+  var people = db.collection('people');
+  var cursor = people.find({}).sort([['age', 1], ['name', 1]]);
+  cursor.each(function(err, doc) {
+    var age = doc.age;
+    var name = doc.name;
+    console.log(age + " " + name);
+  }
+}
+</pre>
+    </article>
+  </slide>
+
+
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/mongo_icon.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Schema Design</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Application-Driven Schema</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>rich documents</li>
+        <li>pre joins / embed data</li>
+        <li>no mongo joins</li>
+        <li>no constraints</li>
+        <li>atomic operations</li>
+        <li>no declared schema</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/cat4.jpg)">
+    <hgroup class="auto-fadein">
+      <h2 class="white">Application-Driven Schema</h2>
+    </hgroup>
+    <article class="flexbox vleft auto-fadein">
+      <q style="color:white;">
+        To embed, or not to embed
+        <br>
+        That is the question
+      </q>
+    </article>
+    <footer class="source white">Source: www.flickr.com/photos/piper/3698621494</footer>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/cat9.jpg)">
+    <hgroup class="auto-fadein">
+      <h2 class="white">Living without Contraints / Transactions</h2>
+    </hgroup>
+    <footer class="source white">Source: www.flickr.com/photos/rampx/5883424922</footer>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/cat10.jpg)">
+    <hgroup class="auto-fadein">
+      <h2 class="white">Relations in MongoDB</h2>
+    </hgroup>
+    <footer class="source white">Source: www.flickr.com/photos/helenajansen/8093502907</footer>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/mongo_icon.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Performance</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="fill">
+    <article class="flexbox vcenter">
+      <span><img src="images/index.png" style="width:800px"></span>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Create an Index</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Java Script">
+{ name: "Andrew",
+  tags: ['cycling', 'tennis', 'football'],
+  color: 'red',
+  locations: ['NY', 'CA'] }
+  </pre>
+  <pre class="prettyprint" data-lang="Java Script">
+db.people.ensureIndex({name: 1})
+
+db.system.indexes.find()
+  </pre>
+
+  <pre class="prettyprint" data-lang="Java Script">
+db.people.ensureIndex({address.phone : 1})
+  </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Create an Unique Index</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Java Script">
+db.stuff.ensureIndex({thing:1}, {unique : true})
+  </pre>
+    <pre class="prettyprint" data-lang="Java Script">
+db.stuff.ensureIndex({thing:1}, {unique : true , dropDups: true})
+  </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Create an Sparse Index</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Java Script">
+{a:1, b:2, c:3}
+{a:10, b:5, c:10}
+{a:13, b:14}
+{a:7, b:23}
+
+db.collection.ensureIndex( { c: 1 }, { unique : true, sparse: true } )
+  </pre>
+  <pre class="prettyprint" data-lang="Java Script">
+db.collection.find().sort({c:1})             // 2.4
+db.collection.find().sort({c:1}).hint({c:1}) // 2.6
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Explain</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Java Script">
+for (i = 0; i &lt; 1000; i++) {
+  db.foo.insert({a:i, b:i, c:i})
+}
+
+&gt; db.foo.ensureIndex({a:1, b:1, c:1})
+&gt; db.foo.find({c:1}).explain()
+&gt; db.foo.find({a:500}).explain()
+&gt; db.foo.find({a:500}, {a:1, b:1, _id:0}).explain()
+&gt; db.foo.find({$and : [{c:{$gt:250}}, {c:{$lt:500}}]}).sort({a:1}).explain()
+  </pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/cat11.jpg)">
+    <hgroup class="auto-fadein">
+      <h2 class="black">Choosing an Index</h2>
+    </hgroup>
+    <footer class="source black">Source: www.flickr.com/photos/furlined/8271123698</footer>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Geospatial Indexes</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Java Script">
+location : [x, y]
+ensureIndex({location:'2d', type: 1})
+
+db.schools.find({location : { $near : [x, y] }}).limit(10)
+  </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Top and Stat</h2>
+    </hgroup>
+    <article>
+  <q style="line-height:60px"><code>mongotop</code> provides a method to track the amount of time a MongoDB instance spends reading and writing data.</q>
+<br>
+<br>
+<br>
+<q style="line-height:60px">The <code>mongostat</code> utility provides a quick overview of the status of a currently running mongod or mongos instance.</q>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/mongo_icon.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Aggregation Framework</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="fill">
+    <article class="flexbox vcenter">
+      <span><img src="images/aggregation.png" style="width:800px"></span>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>$project</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.article.aggregate(
+    { $project : {
+        _id : 0 ,
+        title : 1
+    }}
+);
+
+db.article.aggregate(
+    { $project : {
+        title : 1 ,
+        stats : {
+            pv : "$pageViews",
+            foo : "$other.foo",
+            dpv : { $add:["$pageViews", 10] }
+        }
+    }}
+);</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>$match</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.articles.aggregate(
+    [ { $match : { author : "dave" } } ]
+);
+</pre>
+<pre class="prettyprint" data-lang="Mongo Shell">
+db.articles.aggregate( [
+                        { $match : { score : { $gt : 70, $lte : 90 } } },
+                        { $group: { _id: null, count: { $sum: 1 } } }
+                       ] );
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>$group</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.article.aggregate(
+    { $group : {
+        _id : "$author",
+        docsPerAuthor : { $sum : 1 },
+        viewsPerAuthor : { $sum : "$pageViews" }
+    }}
+);
+  </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>$group</h2>
+    </hgroup>
+    <article class="build">
+      <pre class="prettyprint" data-lang="Mongo Shell">
+db.books.aggregate(
+   [
+     { $group : { _id : "$author", books: { $push: "$title" } } }
+   ]
+)
+  </pre>
+  <pre class="prettyprint" data-lang="Mongo Shell">
+{ "_id" : "Homer", "books" : [ "The Odyssey", "Iliad" ] }
+{ "_id" : "Dante", "books" : [ "The Banquet", "Divine Comedy", "Eclogues" ] }
+  </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>$group</h2>
+    </hgroup>
+    <article class="build">
+      <pre class="prettyprint" data-lang="Mongo Shell">
+{
+  _id: ...,
+  student_id: 22,
+  class_id: 123,
+  type: "homework",
+  score: 56
+}
+  </pre>
+  <pre class="prettyprint" data-lang="Mongo Shell">
+db.grades.aggregate([
+    {'$group' : {_id : {class_id : "$class_id", student_id : "$student_id"},
+                 'average' : {"$avg" : "$score"}}},
+    {'$group' : {_id : "$_id.class_id", "average" : {"$avg" : "$average"}}}
+])
+  </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>$group</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>$addToSet</li>
+        <li>$first</li>
+        <li>$last</li>
+        <li>$max</li>
+        <li>$min</li>
+        <li>$avg</li>
+        <li>$push</li>
+        <li>$sum</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>$unwind</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Mongo Shell">
+{
+  author: "bob",
+  title: "this is my title",
+  tags: ["fun", "nice", "good"],
+  ...
+}
+  </pre>
+  <pre class="prettyprint" data-lang="Mongo Shell">
+db.article.aggregate(
+  { $project : {
+      author : 1 ,
+      title : 1 ,
+      tags : 1
+  }},
+  { $unwind : "$tags" }
+);
+  </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>$unwind</h2>
+    </hgroup>
+    <article>
+  <pre class="prettyprint" data-lang="Mongo Shell">
+{ "result" :[{
+                     "_id" : ObjectId("4e6e4ef557b77501a49233f6"),
+                     "title" : "this is my title",
+                     "author" : "bob",
+                     "tags" : "fun"
+             },
+             {
+                     "_id" : ObjectId("4e6e4ef557b77501a49233f6"),
+                     "title" : "this is my title",
+                     "author" : "bob",
+                     "tags" : "good"
+             },
+             {
+                     "_id" : ObjectId("4e6e4ef557b77501a49233f6"),
+                     "title" : "this is my title",
+                     "author" : "bob",
+                     "tags" : "nice"
+             } ], "OK" : 1}</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>$limit, $skip and $sort</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="Mongo Shell">
+db.users.aggregate(
+   [
+     { $sort : { age : -1, posts: 1 } },
+     { $skip : 5 },
+     { $limit : 5 }
+   ]
+)
+</pre>
+    </article>
+  </slide>
+
+
+  <slide class="fill">
+    <article class="flexbox vcenter">
+      <span><img src="images/map-reduce.png" style="width:800px"></span>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>MapReduce</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Java Script">
+  {
+  _id: ObjectId("50a8240b927d5d8b5891743c"),
+  cust_id: "abc123",
+  ord_date: new Date("Oct 04, 2012"),
+  status: 'A',
+  price: 25,
+  items: [ { sku: "mmm", qty: 5, price: 2.5 },
+           { sku: "nnn", qty: 5, price: 2.5 } ]
+  }
+  </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>MapReduce</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Java Script">
+var mapFn = function() {
+  emit(this.cust_id, this.price);
+};
+      </pre>
+      <pre class="prettyprint" data-lang="Java Script">
+var reduceFn = function(keyCustId, valuesPrices) {
+  return Array.sum(valuesPrices);
+};
+      </pre>
+      <pre class="prettyprint" data-lang="Java Script">
+db.orders.mapReduce(
+  mapFn,
+  reduceFn,
+  { out: "map_reduce_example" }
+)
+  </pre>
+    </article>
+  </slide>
+
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/mongo_icon.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Application Engineering</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="fill">
+    <hgroup class="auto-fadein">
+      <h2>Replication</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <span><img src="images/repa1.png" style="width:500px"></span>
+    </article>
+  </slide>
+
+  <slide class="fill">
+    <hgroup class="auto-fadein">
+      <h2>Replication</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <span><img src="images/repa.png" style="width:500px"></span>
+    </article>
+  </slide>
+
+  <slide class="fill">
+    <hgroup class="auto-fadein">
+      <h2>Replication Set Election</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <span><img src="images/repa2.png" style="width:500px"></span>
+    </article>
+  </slide>
+
+  <slide class="fill">
+    <hgroup class="auto-fadein">
+      <h2>Arbiter Nodes</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <span><img src="images/repa3.png" style="width:500px"></span>
+    </article>
+  </slide>
+
+  <slide class="fill">
+    <hgroup class="auto-fadein">
+      <h2>Delayed Replication</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <span><img src="images/repa4.png" style="width:500px"></span>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Replication Configuration</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="Bash">
+  #!/usr/bin/env bash
+
+  mkdir -p /data/rs1 /data/rs2 /data/rs3
+  mongod --replSet m101 --logpath "1.log" --dbpath /data/rs1 --port 27017 \
+       --oplogSize 64 --smallfiles --fork
+  mongod --replSet m101 --logpath "2.log" --dbpath /data/rs2 --port 27018 ...
+  mongod --replSet m101 --logpath "3.log" --dbpath /data/rs3 --port 27019 ...
+  </pre>
+  <pre class="prettyprint" data-lang="Mongo Shell">
+  config = { _id: "m101", members:[
+          { _id : 0, host : "localhost:27017"},
+          { _id : 1, host : "localhost:27018"},
+          { _id : 2, host : "localhost:27019"} ]
+  };
+
+  rs.initiate(config);
+  rs.status();
+  </pre>
+    </article>
+  </slide>
+
+  <slide class="fill">
+    <hgroup class="auto-fadein">
+      <h2>Sharding</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <span><img src="images/shar1.png" style="width:500px"></span>
+    </article>
+  </slide>
+
+  <slide class="fill">
+    <hgroup class="auto-fadein">
+      <h2>Range Based Sharding</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <span><img src="images/shar3.png" style="width:500px"></span>
+    </article>
+  </slide>
+
+  <slide class="fill">
+    <hgroup class="auto-fadein">
+      <h2>Hash Based Sharding</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <span><img src="images/shar4.png" style="width:500px"></span>
+    </article>
+  </slide>
+
+  <slide class="fill">
+    <hgroup class="auto-fadein">
+      <h2>mongos</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <span><img src="images/shar5.png" style="width:400px"></span>
+    </article>
+  </slide>
+
+  <slide class="fill">
+    <hgroup class="auto-fadein">
+      <h2>Production Cluster Architecture</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <span><img src="images/shar2.png" style="width:500px"></span>
+    </article>
   </slide>
 
   <slide class="thank-you-slide segue nobackground">
