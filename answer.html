@@ -36,8 +36,7 @@
 db.data.find({ "Wind Direction" : { $gt : 180, $lt : 360 } })
        .sort({ "Temperature" : 1 })
        .limit(3)
-       .pretty()
-      </pre></code>
+       .pretty()</pre></code>
         <h3>Aufgabe 2</h3>
         <code><pre>
 var MongoClient = require('mongodb').MongoClient;
@@ -79,8 +78,7 @@ try {
 } ...
 
 
-user = usersCollection.findOne(new BasicDBObject("_id", username));
-        </pre></code>
+user = usersCollection.findOne(new BasicDBObject("_id", username));</pre></code>
         <h4>Node</h4>
         <code><pre>
 var user = {'_id': username, 'password': password_hash};
