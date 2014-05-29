@@ -83,6 +83,21 @@ try {
 user = usersCollection.findOne(new BasicDBObject("_id", username));
         </pre></code>
         <h4>Node</h4>
+        <code><pre>
+var user = {'_id': username, 'password': password_hash};
+if (email != "") {
+    user['email'] = email;
+}
+users.insert(user, function (err, result) {
+    if (!err) {
+        return callback(null, result);
+    }
+    return callback(err, null);
+});
+
+
+users.findOne({ '_id' : username }, validateUserDoc);  
+      </pre></code>
         <h3>Aufgabe 4</h3>
         <h3>Aufgabe 5</h3>
         <h3>Aufgabe 6</h3>
