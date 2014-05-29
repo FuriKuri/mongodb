@@ -161,6 +161,16 @@ if (email != null && !email.equals("")) {
 postsCollection.update(new BasicDBObject("permalink", permalink),
         new BasicDBObject("$push", new BasicDBObject("comments", comment)), false, false);</pre></code>
         <h4>Node</h4>
+        <code><pre>
+var comment = {author: name, body: body}
+if (email != "") {
+    comment['email'] = email
+}
+posts.update({permalink: permalink}, {'$push': {comments: comment}}, function(err, numModified) {
+    "use strict";
+    if (err) return callback(err, null);
+    callback(err, numModified);
+});</pre></code>
         <h3>Aufgabe 7</h3>
         <h3>Aufgabe 8</h3>
         <h3>Aufgabe 9</h3>
