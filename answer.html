@@ -68,6 +68,21 @@ MongoClient.connect('mongodb://localhost:27017/weather', function(err, db) {
 });
       </pre></code>
         <h3>Aufgabe 3</h3>
+        <h4>Java</h4>
+        <code><pre>
+BasicDBObject user = new BasicDBObject();
+user.append("_id", username).append("password", passwordHash);
+if (email != null && !email.equals("")) {
+    user.append("email", email);
+}
+try {
+    usersCollection.insert(user);
+} ...
+
+
+user = usersCollection.findOne(new BasicDBObject("_id", username));
+        </pre></code>
+        <h4>Node</h4>
         <h3>Aufgabe 4</h3>
         <h3>Aufgabe 5</h3>
         <h3>Aufgabe 6</h3>
