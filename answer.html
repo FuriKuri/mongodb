@@ -32,6 +32,12 @@
       <section>
         <h2>Die Lösungen</h2>
         <h3>Aufgabe 1</h3>
+        <code><pre>
+db.data.find({ "Wind Direction" : { $gt : 180, $lt : 360 } })
+       .sort({"Temperature":1})
+       .limit(3)
+       .pretty()
+      </pre></code>
         <h3>Aufgabe 2</h3>
         <h3>Aufgabe 3</h3>
         <h3>Aufgabe 4</h3>
