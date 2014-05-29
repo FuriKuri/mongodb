@@ -198,6 +198,17 @@ db.grades.aggregate([
   {$sort:{avg:1}}
 ])</pre></code>
         <h3>Aufgabe 10</h3>
+        <code><pre>
+db.zips.aggregate([
+  {$project:
+    {
+      first_char: {$substr : ["$city",0,1]},
+      pop:1
+    }
+  },
+  {$match:{first_char:{$regex:/[0-9]/i}}},
+  {$group:{_id:"$dummy", sum:{$sum:"$pop"}}}
+])</pre></code>
         <h3>Aufgabe 11</h3>
         <h3>Aufgabe 12</h3>
         <h3>Aufgabe 13</h3>
