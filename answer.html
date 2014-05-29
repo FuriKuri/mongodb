@@ -139,6 +139,18 @@ post.append("comments", new java.util.ArrayList());
 post.append("date", new java.util.Date());
 postsCollection.insert(post);</pre></code>
         <h4>Node</h4>
+        <code><pre>
+var post = { title: title,
+             author: author,
+             body: body,
+             permalink: permalink,
+             tags: tags,
+             comments: [],
+             date: new Date() };
+posts.insert(post, function (err, result) {
+    if (err) return callback(err, null);
+    callback(err, permalink);
+});</pre></code>
         <h3>Aufgabe 6</h3>
         <h3>Aufgabe 7</h3>
         <h3>Aufgabe 8</h3>
