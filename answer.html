@@ -188,6 +188,15 @@ db.zips.aggregate([
   {$group:{_id:null, avg:{$avg:"$pop"}} }
 ])</pre></code>
         <h3>Aufgabe 9</h3>
+        <code><pre>
+db.grades.aggregate([
+  {$unwind:"$scores"},
+  {$match:{'scores.type':{$in:["homework", "exam"]}}},
+  {$group:{_id:{student_id:"$student_id",class_id:"$class_id"}, gpa:{$avg:"$scores.score"}}},
+  {$project:{_id:0, student_id:"$_id.student_id", class_id:"$_id.class_id", gpa:1}},
+  {$group:{_id:"$class_id", avg:{$avg:"$gpa"}}},
+  {$sort:{avg:1}}
+])</pre></code>
         <h3>Aufgabe 10</h3>
         <h3>Aufgabe 11</h3>
         <h3>Aufgabe 12</h3>
