@@ -65,8 +65,7 @@ MongoClient.connect('mongodb://localhost:27017/weather', function(err, db) {
       });
     }
   });
-});
-      </pre></code>
+});  </pre></code>
         <h3>Aufgabe 3</h3>
         <h4>Java</h4>
         <code><pre>
@@ -96,8 +95,7 @@ users.insert(user, function (err, result) {
 });
 
 
-users.findOne({ '_id' : username }, validateUserDoc);
-      </pre></code>
+users.findOne({ '_id' : username }, validateUserDoc);</pre></code>
         <h3>Aufgabe 4</h3>
         <code><pre>
 var MongoClient = require('mongodb').MongoClient;
@@ -141,8 +139,7 @@ post.append("permalink", permalink);
 post.append("tags", tags);
 post.append("comments", new java.util.ArrayList());
 post.append("date", new java.util.Date());
-postsCollection.insert(post);  
-      </pre></code>
+postsCollection.insert(post);</pre></code>
         <h4>Node</h4>
         <h3>Aufgabe 6</h3>
         <h3>Aufgabe 7</h3>
