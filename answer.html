@@ -159,7 +159,8 @@ if (email != null && !email.equals("")) {
     comment.append("email", email);
 }
 postsCollection.update(new BasicDBObject("permalink", permalink),
-        new BasicDBObject("$push", new BasicDBObject("comments", comment)), false, false);</pre></code>
+        new BasicDBObject("$push",
+            new BasicDBObject("comments", comment)), false, false);</pre></code>
         <h4>Node</h4>
         <code><pre>
 var comment = {author: name, body: body}
