@@ -237,7 +237,10 @@ db.messages.aggregate([
   {$limit : 2}
 ])</pre></code>
         <h3>Aufgabe 14</h3>
-        <code><pre></pre></code>
+        <code><pre>db.messages.update(
+  {"headers.Message-ID":"<8147308.1075851042335.JavaMail.evans@thyme>"},
+  {$addToSet:{"headers.To":"mrpotatohead@10gen.com"}
+})</pre></code>
       </section>
       <footer>
         <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
