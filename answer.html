@@ -152,6 +152,15 @@ posts.insert(post, function (err, result) {
     callback(err, permalink);
 });</pre></code>
         <h3>Aufgabe 6</h3>
+        <h4>Java</h4>
+        <code><pre>
+BasicDBObject comment = new BasicDBObject("author", name).append("body", body);
+if (email != null && !email.equals("")) {
+    comment.append("email", email);
+}
+postsCollection.update(new BasicDBObject("permalink", permalink),
+        new BasicDBObject("$push", new BasicDBObject("comments", comment)), false, false);</pre></code>
+        <h4>Node</h4>
         <h3>Aufgabe 7</h3>
         <h3>Aufgabe 8</h3>
         <h3>Aufgabe 9</h3>
