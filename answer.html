@@ -210,7 +210,12 @@ db.zips.aggregate([
   {$group:{_id:"$dummy", sum:{$sum:"$pop"}}}
 ])</pre></code>
         <h3>Aufgabe 12</h3>
-        <code><pre></pre></code>
+        <code><pre>
+db.messages.find(
+    {"headers.From": "andrew.fastow@enron.com",
+     "headers.To": {$all: ["jeff.skilling@enron.com"]}
+    }
+).count()</pre></code>
         <h3>Aufgabe 13</h3>
         <code><pre></pre></code>
         <h3>Aufgabe 14</h3>
