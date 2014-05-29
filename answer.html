@@ -96,9 +96,41 @@ users.insert(user, function (err, result) {
 });
 
 
-users.findOne({ '_id' : username }, validateUserDoc);  
+users.findOne({ '_id' : username }, validateUserDoc);
       </pre></code>
         <h3>Aufgabe 4</h3>
+        <code><pre>
+var MongoClient = require('mongodb').MongoClient;
+
+MongoClient.connect('mongodb://localhost:27017/school', function(err, db) {
+    if(err) throw err;
+
+    var students = db.collection('students');
+    var cursor = students.find({});
+
+    cursor.each(function(err, doc) {
+        if(err) throw err;
+        if(doc == null) {
+            return db.close();
+        }
+        var scores = doc.scores;
+        var lowestScore = null;
+        var scoreDoc = null;
+        scores.forEach(function(score) {
+          if (score.type == 'homework') {
+            if (lowestScore == null || score.score < lowestScore) {
+              lowestScore = score.score;
+              scoreDoc = score;
+            }
+          }
+        });
+        scores.splice(scores.indexOf(scoreDoc), 1);
+        grades.save(doc, function(err, saved) {
+          console.dir(saved);
+        });
+
+    });
+});</pre></code>
         <h3>Aufgabe 5</h3>
         <h3>Aufgabe 6</h3>
         <h3>Aufgabe 7</h3>
