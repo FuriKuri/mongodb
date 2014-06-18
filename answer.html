@@ -66,35 +66,7 @@ MongoClient.connect('mongodb://localhost:27017/weather', function(err, db) {
     }
   });
 });  </pre></code>
-        <h3>Aufgabe 30</h3>
-        <h4>Java</h4>
-        <code><pre>
-BasicDBObject user = new BasicDBObject();
-user.append("_id", username).append("password", passwordHash);
-if (email != null && !email.equals("")) {
-    user.append("email", email);
-}
-try {
-    usersCollection.insert(user);
-} ...
 
-
-user = usersCollection.findOne(new BasicDBObject("_id", username));</pre></code>
-        <h4>Node</h4>
-        <code><pre>
-var user = {'_id': username, 'password': password_hash};
-if (email != "") {
-    user['email'] = email;
-}
-users.insert(user, function (err, result) {
-    if (!err) {
-        return callback(null, result);
-    }
-    return callback(err, null);
-});
-
-
-users.findOne({ '_id' : username }, validateUserDoc);</pre></code>
         <h3>Aufgabe 3</h3>
         <code><pre>
 var MongoClient = require('mongodb').MongoClient;
@@ -128,58 +100,7 @@ MongoClient.connect('mongodb://localhost:27017/school', function(err, db) {
 
     });
 });</pre></code>
-        <h3>Aufgabe 50</h3>
-        <h4>Java</h4>
-        <code><pre>
-BasicDBObject post = new BasicDBObject("title", title);
-post.append("author", username);
-post.append("body", body);
-post.append("permalink", permalink);
-post.append("tags", tags);
-post.append("comments", new java.util.ArrayList());
-post.append("date", new java.util.Date());
-postsCollection.insert(post);</pre></code>
-        <h4>Node</h4>
-        <code><pre>
-var post = { title: title,
-             author: author,
-             body: body,
-             permalink: permalink,
-             tags: tags,
-             comments: [],
-             date: new Date() };
-posts.insert(post, function (err, result) {
-    if (err) return callback(err, null);
-    callback(err, permalink);
-});</pre></code>
-        <h3>Aufgabe 60</h3>
-        <h4>Java</h4>
-        <code><pre>
-BasicDBObject comment = new BasicDBObject("author", name).append("body", body);
-if (email != null && !email.equals("")) {
-    comment.append("email", email);
-}
-postsCollection.update(new BasicDBObject("permalink", permalink),
-        new BasicDBObject("$push",
-            new BasicDBObject("comments", comment)), false, false);</pre></code>
-        <h4>Node</h4>
-        <code><pre>
-var comment = {author: name, body: body}
-if (email != "") {
-    comment['email'] = email
-}
-posts.update({permalink: permalink}, {'$push': {comments: comment}}, function(err, numModified) {
-    "use strict";
-    if (err) return callback(err, null);
-    callback(err, numModified);
-});</pre></code>
-        <h3>Aufgabe 70</h3>
-        <strong>HomePage</strong><br>
- -> <code>db.posts.ensureIndex({ date: -1})</code><br>
-<strong>Shows by Tag: http://localhost:8082/tag/whatever</strong><br>
- -> <code>db.posts.ensureIndex({ permalink: 1}, {unique: true})</code><br>
-<strong>Show blog post: http://localhost:8082/post/permalink</strong><br>
- -> <code>db.posts.ensureIndex({ tags: 1})</code><br>
+
         <h3>Aufgabe 4</h3>
         <code><pre>
 db.zips.aggregate([
@@ -242,6 +163,91 @@ db.messages.aggregate([
   {"headers.Message-ID":"<8147308.1075851042335.JavaMail.evans@thyme>"},
   {$addToSet:{"headers.To":"mrpotatohead@10gen.com"}
 })</pre></code>
+
+
+<h3>Aufgabe 30</h3>
+<h4>Java</h4>
+<code><pre>
+BasicDBObject user = new BasicDBObject();
+user.append("_id", username).append("password", passwordHash);
+if (email != null && !email.equals("")) {
+user.append("email", email);
+}
+try {
+usersCollection.insert(user);
+} ...
+
+
+user = usersCollection.findOne(new BasicDBObject("_id", username));</pre></code>
+<h4>Node</h4>
+<code><pre>
+var user = {'_id': username, 'password': password_hash};
+if (email != "") {
+user['email'] = email;
+}
+users.insert(user, function (err, result) {
+if (!err) {
+return callback(null, result);
+}
+return callback(err, null);
+});
+
+
+users.findOne({ '_id' : username }, validateUserDoc);</pre></code>
+<h3>Aufgabe 50</h3>
+<h4>Java</h4>
+<code><pre>
+BasicDBObject post = new BasicDBObject("title", title);
+post.append("author", username);
+post.append("body", body);
+post.append("permalink", permalink);
+post.append("tags", tags);
+post.append("comments", new java.util.ArrayList());
+post.append("date", new java.util.Date());
+postsCollection.insert(post);</pre></code>
+<h4>Node</h4>
+<code><pre>
+var post = { title: title,
+     author: author,
+     body: body,
+     permalink: permalink,
+     tags: tags,
+     comments: [],
+     date: new Date() };
+posts.insert(post, function (err, result) {
+if (err) return callback(err, null);
+callback(err, permalink);
+});</pre></code>
+<h3>Aufgabe 60</h3>
+<h4>Java</h4>
+<code><pre>
+BasicDBObject comment = new BasicDBObject("author", name).append("body", body);
+if (email != null && !email.equals("")) {
+comment.append("email", email);
+}
+postsCollection.update(new BasicDBObject("permalink", permalink),
+new BasicDBObject("$push",
+    new BasicDBObject("comments", comment)), false, false);</pre></code>
+<h4>Node</h4>
+<code><pre>
+var comment = {author: name, body: body}
+if (email != "") {
+comment['email'] = email
+}
+posts.update({permalink: permalink}, {'$push': {comments: comment}}, function(err, numModified) {
+"use strict";
+if (err) return callback(err, null);
+callback(err, numModified);
+});</pre></code>
+<h3>Aufgabe 70</h3>
+<strong>HomePage</strong><br>
+-> <code>db.posts.ensureIndex({ date: -1})</code><br>
+<strong>Shows by Tag: http://localhost:8082/tag/whatever</strong><br>
+-> <code>db.posts.ensureIndex({ permalink: 1}, {unique: true})</code><br>
+<strong>Show blog post: http://localhost:8082/post/permalink</strong><br>
+-> <code>db.posts.ensureIndex({ tags: 1})</code><br>
+
+
       </section>
       <footer>
         <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>

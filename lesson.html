@@ -72,27 +72,6 @@ Angenommen es existiert folgender Eintrag, welcher die höchste Temperatur für 
 }</pre></code>
 
 Tip: Nutzt hier die Sortier-Funktion der Datenbank, um im Programmcode selber nicht mehr viel tun zu müssen.
-        <h3>Aufgabe 30</h3>
-        <a href="https://drive.google.com/file/d/0B4SEJlefrbQWUy0tUDY2UkpwQ2c/edit?usp=sharing">Java Blog Anwendung</a><br>
-        <a href="https://drive.google.com/file/d/0B4SEJlefrbQWV0tHanNlRldaeUU/edit?usp=sharing">Node Blog Anwendung</a><br>
-        <p>Ladet euch das Projekt-Template für eure jeweilige Sprache runter.
-Anwendung starten:</p>
-<code>Java: mvn compile exec:java -Dexec.mainClass=blog.BlogController</code><br>
-<code>Node.JS: npm install; node app.js</code>
-  <br><br>
-URLs:<ul><li>http://localhost:3000/signup</li>
-<li>http://localhost:3000/login</li>
-<li>http://localhost:3000/logout</li>
-</ul>
-<strong>Die Aufgabe:</strong> Fügt an den markierten Stellen <code>//TODO: Aufgabe 3</code> den fehlenden Code hinzu, so dass Benutzer sich registrieren und sich einloggen können.
-<br><br>
-Innerhalb der Datenbank sieht die User-Collection dann folgendermaßen aus:
-<code><pre>> use blog
-switched to db blog
-> db.users.find()
-{ "_id" : "dummy", "password" : "$2a$10$wl4bNB/5CqwWx4bB66PoQ.lmYvxUHigM1ehljyWQBupen3uCcldoW", "email" : "my@mail.com" }
-></pre></code>
-Am Ende der Aufgabe muss man sich auf der Seite http://localhost:3000/signup registrieren können und auf http://localhost:3000/login sich mit diesen Daten einloggen können.
 
         <h3>Aufgabe 3</h3>
         Ladet euch die <a href="https://drive.google.com/file/d/0B4SEJlefrbQWaGY3azF1TWtuU28/edit?usp=sharing">students.json</a> runter und import diese in eure Datenbank:<br>
@@ -102,39 +81,7 @@ Am Ende der Aufgabe muss man sich auf der Seite http://localhost:3000/signup reg
 Schreibt ein Programm (in der Sprache eurer Wahl), welches welches die Hausaufgabe (<code>type : "homework"</code>) mit der niedrigsten Wertung entfernt.
 
 Hinweis für die Node.JS User. Mit folgenden Befehl kann ein Element aus dem Array entnommen werden. In diesem Fall wird <code>scoreDoc</code> entfernt:<code>scores.splice(scores.indexOf(scoreDoc), 1);</code>
-        <h3>Aufgabe 50</h3>
-        Erweitert eure Anwendung soweit, dass Blogeinträge hinzugefügt werden können.
-<br><code>http://localhost:8082/newpost</code><br><br>
-In der Datenbank sollte nun folgende EInträge zu finden sein:
-<code><pre>> db.posts.find().pretty()
-{
-"_id" : ObjectId("513d396da0ee6e58987bae74"),
-"title" : "Martians to use MongoDB",
-"author" : "andrew",
-"body" : "Representatives from the planet Mars announced today that the planet would adopt MongoDB as a planetary standard. Head Martian Flipblip said that MongoDB was the perfect tool to store the diversity of life that exists on Mars.",
-"permalink" : "martians_to_use_mongodb",
-"tags" : [
-"martians",
-"seti",
-"nosql",
-"worlddomination"
-],
-"comments" : [ ],
-"date" : ISODate("2013-03-11T01:54:53.692Z")
-}</pre></code>
-        <h3>Aufgabe 60</h3>
-        Kommentare hinzufügen
-Erweitert eure Anwendung soweit, dass Blogeinträge Kommenatre entgegen nehmen können.<br>
-<code>http://localhost:8082/post/post_slug</code><br>
-<code>http://localhost:8082/post/martians_to_use_mongodb</code>
-        <h3>Aufgabe 70</h3>
-        Macht euren Blog schneller. Benutzt Indexes!
-Schaut, welche Abfrage die Anwendung nutzt und optimiert diese.
-<ul>
-<li>HomePage</li>
-<li>Shows by Tag: <code>http://localhost:8082/tag/whatever</code></li>
-<li>Show blog post: <code>http://localhost:8082/post/permalink</code></li>
-</ul>
+
         <h3>Aufgabe 4</h3>
         Ladet euch die Datei <a href="https://drive.google.com/file/d/0B4SEJlefrbQWa3BoX3R2RzFMRjA/edit?usp=sharing">small_zips.json</a> runter.<br>
 <code>mongoimport -d test -c zips --drop small_zips.json</code><br><br>
@@ -173,7 +120,78 @@ db.zips.aggregate([
      }
    }
 ])</pre></code>
-        <h3>Aufgabe 110</h3>
+
+        <h3>Aufgabe 7</h3>
+        Lade die Datei <a href="https://drive.google.com/file/d/0B4SEJlefrbQWZkVPRmhiMUhzeEU/edit?usp=sharing">enron.zip</a> herunter.<br>
+        <code>mongorestore --collection messages --db enron enron/messages.bson</code>
+<br>
+Berechne, wieviele Emails Andrew Fastow (andrew.fastow@enron.com) zu Jeff Skilling (was jeff.skilling@enron.com) geschickt hat?
+        <h3>Aufgabe 8</h3>
+        Ermittle wer mit wem am meisten kommunizierte. Konkret: Person x schickte Person y die meisten Nachriten. Wer sind x und y?
+        <h3>Aufgabe 9</h3>
+        Füge jedem Dokument mit dem Feld <code>"headers.Message-ID"</code> mit dem Wert <code>"<8147308.1075851042335.JavaMail.evans@thyme>"</code> dem Feld <code>"headers.to"</code> die E-Mail <code>"mrpotatohead@10gen.com"</code> hinzu.
+
+
+
+<h3>Aufgabe 30</h3>
+<a href="https://drive.google.com/file/d/0B4SEJlefrbQWUy0tUDY2UkpwQ2c/edit?usp=sharing">Java Blog Anwendung</a><br>
+<a href="https://drive.google.com/file/d/0B4SEJlefrbQWV0tHanNlRldaeUU/edit?usp=sharing">Node Blog Anwendung</a><br>
+<p>Ladet euch das Projekt-Template für eure jeweilige Sprache runter.
+Anwendung starten:</p>
+<code>Java: mvn compile exec:java -Dexec.mainClass=blog.BlogController</code><br>
+<code>Node.JS: npm install; node app.js</code>
+<br><br>
+URLs:<ul><li>http://localhost:3000/signup</li>
+<li>http://localhost:3000/login</li>
+<li>http://localhost:3000/logout</li>
+</ul>
+<strong>Die Aufgabe:</strong> Fügt an den markierten Stellen <code>//TODO: Aufgabe 3</code> den fehlenden Code hinzu, so dass Benutzer sich registrieren und sich einloggen können.
+<br><br>
+Innerhalb der Datenbank sieht die User-Collection dann folgendermaßen aus:
+<code><pre>> use blog
+switched to db blog
+> db.users.find()
+{ "_id" : "dummy", "password" : "$2a$10$wl4bNB/5CqwWx4bB66PoQ.lmYvxUHigM1ehljyWQBupen3uCcldoW", "email" : "my@mail.com" }
+></pre></code>
+Am Ende der Aufgabe muss man sich auf der Seite http://localhost:3000/signup registrieren können und auf http://localhost:3000/login sich mit diesen Daten einloggen können.
+
+<h3>Aufgabe 50</h3>
+Erweitert eure Anwendung soweit, dass Blogeinträge hinzugefügt werden können.
+<br><code>http://localhost:8082/newpost</code><br><br>
+In der Datenbank sollte nun folgende EInträge zu finden sein:
+<code><pre>> db.posts.find().pretty()
+{
+"_id" : ObjectId("513d396da0ee6e58987bae74"),
+"title" : "Martians to use MongoDB",
+"author" : "andrew",
+"body" : "Representatives from the planet Mars announced today that the planet would adopt MongoDB as a planetary standard. Head Martian Flipblip said that MongoDB was the perfect tool to store the diversity of life that exists on Mars.",
+"permalink" : "martians_to_use_mongodb",
+"tags" : [
+"martians",
+"seti",
+"nosql",
+"worlddomination"
+],
+"comments" : [ ],
+"date" : ISODate("2013-03-11T01:54:53.692Z")
+}</pre></code>
+<h3>Aufgabe 60</h3>
+Kommentare hinzufügen
+Erweitert eure Anwendung soweit, dass Blogeinträge Kommenatre entgegen nehmen können.<br>
+<code>http://localhost:8082/post/post_slug</code><br>
+<code>http://localhost:8082/post/martians_to_use_mongodb</code>
+<h3>Aufgabe 70</h3>
+Macht euren Blog schneller. Benutzt Indexes!
+Schaut, welche Abfrage die Anwendung nutzt und optimiert diese.
+<ul>
+<li>HomePage</li>
+<li>Shows by Tag: <code>http://localhost:8082/tag/whatever</code></li>
+<li>Show blog post: <code>http://localhost:8082/post/permalink</code></li>
+</ul>
+
+
+
+<h3>Aufgabe 110</h3>
 Baut eine kleine Replica Set auf.
 <code><pre>
 mkdir -p /data/rs1 /data/rs2 /data/rs3
@@ -185,23 +203,13 @@ mongod --replSet m101 --logpath "3.log" --dbpath /data/rs3 --port 27019 --smallf
 <pre><code>mongo --port 27017
 
 config = { _id: "m101", members:[
-          { _id : 0, host : "localhost:27017"},
-          { _id : 1, host : "localhost:27018"},
-          { _id : 2, host : "localhost:27019"} ]
-         };
+  { _id : 0, host : "localhost:27017"},
+  { _id : 1, host : "localhost:27018"},
+  { _id : 2, host : "localhost:27019"} ]
+ };
 rs.initiate(config);
 rs.status()
 </pre></code>
-        <h3>Aufgabe 7</h3>
-        Lade die Datei <a href="https://drive.google.com/file/d/0B4SEJlefrbQWZkVPRmhiMUhzeEU/edit?usp=sharing">enron.zip</a> herunter.<br>
-        <code>mongorestore --collection messages --db enron enron/messages.bson</code>
-<br>
-Berechne, wieviele Emails Andrew Fastow (andrew.fastow@enron.com) zu Jeff Skilling (was jeff.skilling@enron.com) geschickt hat?
-        <h3>Aufgabe 8</h3>
-        Ermittle wer mit wem am meisten kommunizierte. Konkret: Person x schickte Person y die meisten Nachriten. Wer sind x und y?
-        <h3>Aufgabe 9</h3>
-        Füge jedem Dokument mit dem Feld <code>"headers.Message-ID"</code> mit dem Wert <code>"<8147308.1075851042335.JavaMail.evans@thyme>"</code> dem Feld <code>"headers.to"</code> die E-Mail <code>"mrpotatohead@10gen.com"</code> hinzu.
-
       </section>
       <footer>
         <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
