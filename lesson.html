@@ -173,7 +173,7 @@ db.zips.aggregate([
      }
    }
 ])</pre></code>
-        <h3>Aufgabe 11</h3>
+        <h3>Aufgabe 110</h3>
 Baut eine kleine Replica Set auf.
 <code><pre>
 mkdir -p /data/rs1 /data/rs2 /data/rs3
@@ -192,14 +192,14 @@ config = { _id: "m101", members:[
 rs.initiate(config);
 rs.status()
 </pre></code>
-        <h3>Aufgabe 12</h3>
+        <h3>Aufgabe 7</h3>
         Lade die Datei <a href="https://drive.google.com/file/d/0B4SEJlefrbQWZkVPRmhiMUhzeEU/edit?usp=sharing">enron.zip</a> herunter.<br>
         <code>mongorestore --collection messages --db enron enron/messages.bson</code>
 <br>
 Berechne, wieviele Emails Andrew Fastow (andrew.fastow@enron.com) zu Jeff Skilling (was jeff.skilling@enron.com) geschickt hat?
-        <h3>Aufgabe 13</h3>
+        <h3>Aufgabe 8</h3>
         Ermittle wer mit wem am meisten kommunizierte. Konkret: Person x schickte Person y die meisten Nachriten. Wer sind x und y?
-        <h3>Aufgabe 14</h3>
+        <h3>Aufgabe 9</h3>
         Füge jedem Dokument mit dem Feld <code>"headers.Message-ID"</code> mit dem Wert <code>"<8147308.1075851042335.JavaMail.evans@thyme>"</code> dem Feld <code>"headers.to"</code> die E-Mail <code>"mrpotatohead@10gen.com"</code> hinzu.
 
       </section>
