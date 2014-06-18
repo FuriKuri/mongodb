@@ -128,7 +128,7 @@ MongoClient.connect('mongodb://localhost:27017/school', function(err, db) {
 
     });
 });</pre></code>
-        <h3>Aufgabe 5</h3>
+        <h3>Aufgabe 50</h3>
         <h4>Java</h4>
         <code><pre>
 BasicDBObject post = new BasicDBObject("title", title);
@@ -152,7 +152,7 @@ posts.insert(post, function (err, result) {
     if (err) return callback(err, null);
     callback(err, permalink);
 });</pre></code>
-        <h3>Aufgabe 6</h3>
+        <h3>Aufgabe 60</h3>
         <h4>Java</h4>
         <code><pre>
 BasicDBObject comment = new BasicDBObject("author", name).append("body", body);
@@ -173,14 +173,14 @@ posts.update({permalink: permalink}, {'$push': {comments: comment}}, function(er
     if (err) return callback(err, null);
     callback(err, numModified);
 });</pre></code>
-        <h3>Aufgabe 7</h3>
+        <h3>Aufgabe 70</h3>
         <strong>HomePage</strong><br>
  -> <code>db.posts.ensureIndex({ date: -1})</code><br>
 <strong>Shows by Tag: http://localhost:8082/tag/whatever</strong><br>
  -> <code>db.posts.ensureIndex({ permalink: 1}, {unique: true})</code><br>
 <strong>Show blog post: http://localhost:8082/post/permalink</strong><br>
  -> <code>db.posts.ensureIndex({ tags: 1})</code><br>
-        <h3>Aufgabe 8</h3>
+        <h3>Aufgabe 4</h3>
         <code><pre>
 db.zips.aggregate([
   {$match: {state:{$in:["CA","NY"]}}},
@@ -188,7 +188,7 @@ db.zips.aggregate([
   {$match:{pop:{$gt:25000}}},
   {$group:{_id:null, avg:{$avg:"$pop"}} }
 ])</pre></code>
-        <h3>Aufgabe 9</h3>
+        <h3>Aufgabe 5</h3>
         <code><pre>
 db.grades.aggregate([
   {$unwind:"$scores"},
@@ -198,7 +198,7 @@ db.grades.aggregate([
   {$group:{_id:"$class_id", avg:{$avg:"$gpa"}}},
   {$sort:{avg:1}}
 ])</pre></code>
-        <h3>Aufgabe 10</h3>
+        <h3>Aufgabe 6</h3>
         <code><pre>
 db.zips.aggregate([
   {$project:
