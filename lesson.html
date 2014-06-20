@@ -31,6 +31,16 @@
 
       </header>
       <section>
+        <h2>Vorbereitung - Mongo starten und nutzen</h2>
+        <p>Stellt sicher, dass Mongo mit in der PATH-Variable ist.</p>
+        <h3>Datenbank starten</h3>
+          Erstellt einen Ordner, in dem die Datenbank abgelegt werden soll (kann nach dem WOrkshop wieder gelöscht werden):
+          <code><pre>$ mkdir tmp-db</pre></code>
+          Anschließend kann die Datenbank mit folgendem Befehl gestartet werden (dbpath gibt den Pfad zum gerade erstellten Ordner an):
+          <code><pre>$ mongod --dbpath=tmp-db</pre></code>
+        <h3>MongoDB Shell starten</h3>
+          Öffnet ein neues Terminal und mit folgendem Befehl kann die Shell gestartet werden:
+          <code><pre>$ mongo</pre></code>
         <h2>Die Aufgaben</h2>
         <h3>Aufgabe 1</h3>
         <ul>
