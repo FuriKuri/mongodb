@@ -165,7 +165,7 @@ db.messages.aggregate([
 })</pre></code>
 
 
-<h3>Aufgabe 30</h3>
+<h3>Aufgabe 10</h3>
 <h4>Java</h4>
 <code><pre>
 BasicDBObject user = new BasicDBObject();
@@ -194,7 +194,7 @@ return callback(err, null);
 
 
 users.findOne({ '_id' : username }, validateUserDoc);</pre></code>
-<h3>Aufgabe 50</h3>
+<h3>Aufgabe 11</h3>
 <h4>Java</h4>
 <code><pre>
 BasicDBObject post = new BasicDBObject("title", title);
@@ -218,7 +218,7 @@ posts.insert(post, function (err, result) {
 if (err) return callback(err, null);
 callback(err, permalink);
 });</pre></code>
-<h3>Aufgabe 60</h3>
+<h3>Aufgabe 12</h3>
 <h4>Java</h4>
 <code><pre>
 BasicDBObject comment = new BasicDBObject("author", name).append("body", body);
@@ -239,7 +239,7 @@ posts.update({permalink: permalink}, {'$push': {comments: comment}}, function(er
 if (err) return callback(err, null);
 callback(err, numModified);
 });</pre></code>
-<h3>Aufgabe 70</h3>
+<h3>Aufgabe 13</h3>
 <strong>HomePage</strong><br>
 -> <code>db.posts.ensureIndex({ date: -1})</code><br>
 <strong>Shows by Tag: http://localhost:8082/tag/whatever</strong><br>
